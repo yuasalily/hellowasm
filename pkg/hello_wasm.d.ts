@@ -1,6 +1,12 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+* @param {number} a
+* @param {number} b
+* @returns {number}
+*/
+export function sums(a: number, b: number): number;
+/**
 * @param {string} name
 */
 export function greet(name: string): void;
@@ -14,6 +20,7 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
+  readonly sums: (a: number, b: number) => number;
   readonly greet: (a: number, b: number) => void;
   readonly sample: (a: number) => number;
   readonly __wbindgen_malloc: (a: number) => number;

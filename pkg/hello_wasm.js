@@ -1,5 +1,15 @@
 let wasm;
 
+/**
+* @param {number} a
+* @param {number} b
+* @returns {number}
+*/
+export function sums(a, b) {
+    const ret = wasm.sums(a, b);
+    return ret;
+}
+
 const cachedTextDecoder = new TextDecoder('utf-8', { ignoreBOM: true, fatal: true });
 
 cachedTextDecoder.decode();
