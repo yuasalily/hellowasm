@@ -1,21 +1,21 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+* @param {string} name
+*/
+export function greet(name: string): void;
+/**
 * @param {number} a
 * @returns {number}
 */
 export function sample(a: number): number;
-/**
-* @param {string} name
-*/
-export function greet(name: string): void;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly sample: (a: number) => number;
   readonly greet: (a: number, b: number) => void;
+  readonly sample: (a: number) => number;
   readonly __wbindgen_malloc: (a: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number) => number;
 }

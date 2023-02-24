@@ -1,14 +1,5 @@
 let wasm;
 
-/**
-* @param {number} a
-* @returns {number}
-*/
-export function sample(a) {
-    const ret = wasm.sample(a);
-    return ret;
-}
-
 const cachedTextDecoder = new TextDecoder('utf-8', { ignoreBOM: true, fatal: true });
 
 cachedTextDecoder.decode();
@@ -87,6 +78,15 @@ export function greet(name) {
     const ptr0 = passStringToWasm0(name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
     wasm.greet(ptr0, len0);
+}
+
+/**
+* @param {number} a
+* @returns {number}
+*/
+export function sample(a) {
+    const ret = wasm.sample(a);
+    return ret;
 }
 
 async function load(module, imports) {
