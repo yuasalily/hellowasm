@@ -7,6 +7,11 @@
 */
 export function sums(a: number, b: number): number;
 /**
+* @param {number} a
+* @returns {number}
+*/
+export function ext(a: number): number;
+/**
 * @param {string} name
 */
 export function greet(name: string): void;
@@ -15,12 +20,25 @@ export function greet(name: string): void;
 * @returns {number}
 */
 export function sample(a: number): number;
+/**
+*/
+export class Mod {
+  free(): void;
+/**
+* @param {number} a
+* @returns {number}
+*/
+  static add(a: number): number;
+}
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly sums: (a: number, b: number) => number;
+  readonly __wbg_mod_free: (a: number) => void;
+  readonly mod_add: (a: number) => number;
+  readonly ext: (a: number) => number;
   readonly greet: (a: number, b: number) => void;
   readonly sample: (a: number) => number;
   readonly __wbindgen_malloc: (a: number) => number;

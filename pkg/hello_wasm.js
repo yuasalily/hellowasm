@@ -1,15 +1,5 @@
 let wasm;
 
-/**
-* @param {number} a
-* @param {number} b
-* @returns {number}
-*/
-export function sums(a, b) {
-    const ret = wasm.sums(a, b);
-    return ret;
-}
-
 const cachedTextDecoder = new TextDecoder('utf-8', { ignoreBOM: true, fatal: true });
 
 cachedTextDecoder.decode();
@@ -25,6 +15,24 @@ function getUint8Memory0() {
 
 function getStringFromWasm0(ptr, len) {
     return cachedTextDecoder.decode(getUint8Memory0().subarray(ptr, ptr + len));
+}
+/**
+* @param {number} a
+* @param {number} b
+* @returns {number}
+*/
+export function sums(a, b) {
+    const ret = wasm.sums(a, b);
+    return ret;
+}
+
+/**
+* @param {number} a
+* @returns {number}
+*/
+export function ext(a) {
+    const ret = wasm.ext(a);
+    return ret;
 }
 
 let WASM_VECTOR_LEN = 0;
@@ -99,6 +107,31 @@ export function sample(a) {
     return ret;
 }
 
+/**
+*/
+export class Mod {
+
+    __destroy_into_raw() {
+        const ptr = this.ptr;
+        this.ptr = 0;
+
+        return ptr;
+    }
+
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_mod_free(ptr);
+    }
+    /**
+    * @param {number} a
+    * @returns {number}
+    */
+    static add(a) {
+        const ret = wasm.mod_add(a);
+        return ret;
+    }
+}
+
 async function load(module, imports) {
     if (typeof Response === 'function' && module instanceof Response) {
         if (typeof WebAssembly.instantiateStreaming === 'function') {
@@ -135,6 +168,9 @@ function getImports() {
     imports.wbg = {};
     imports.wbg.__wbg_alert_151c8d49e07bfbc4 = function(arg0, arg1) {
         alert(getStringFromWasm0(arg0, arg1));
+    };
+    imports.wbg.__wbindgen_throw = function(arg0, arg1) {
+        throw new Error(getStringFromWasm0(arg0, arg1));
     };
 
     return imports;
