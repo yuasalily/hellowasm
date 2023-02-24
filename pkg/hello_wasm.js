@@ -1,5 +1,14 @@
 let wasm;
 
+/**
+* @param {number} a
+* @returns {number}
+*/
+export function sample(a) {
+    const ret = wasm.sample(a);
+    return ret;
+}
+
 const cachedTextDecoder = new TextDecoder('utf-8', { ignoreBOM: true, fatal: true });
 
 cachedTextDecoder.decode();
